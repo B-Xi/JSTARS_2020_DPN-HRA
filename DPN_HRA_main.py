@@ -70,7 +70,7 @@ def do_eval(sess, eval_correct, images, labels, test_x, test_y):
 numComponents=10
 PATCH_LENGTH = 5
                   
-window_size = PATCH_LENGTH*2+1           #27, 27
+window_size = PATCH_LENGTH*2+1           #11, 11
 
 epoch_num = 50
 ITER = 1
@@ -81,35 +81,22 @@ def run_training():
 
 # load the data
     print (150*'*')
-    uPavia = sio.loadmat('/home/amax/xibobo/HybridSN-sample/data/UP/PaviaU.mat')
-    gt_uPavia = sio.loadmat('/home/amax/xibobo/HybridSN-sample/data/UP/PaviaU_combinedGt.mat')
+    uPavia = sio.loadmat('/home/amax/xibobo/data/UP/PaviaU.mat')
+    gt_uPavia = sio.loadmat('/home/amax/xibobo/data/UP/PaviaU_combinedGt.mat')
     data_IN = uPavia['paviaU']
     gt_IN = gt_uPavia['combinedGt']
-#    uPavia = sio.loadmat('/home/amax/xibobo/SSRN-master/datasets/IN/Indian_pines_corrected.mat')
-#    gt_uPavia = sio.loadmat('/home/amax/xibobo/SSRN-master/datasets/IN/Indian_pines_gt.mat')
-#    data_IN = uPavia['indian_pines_corrected']
-#    gt_IN = gt_uPavia['indian_pines_gt']
 
     print (data_IN.shape)
     data = data_IN.reshape(np.prod(data_IN.shape[:2]),np.prod(data_IN.shape[2:]))
     gt = gt_IN.reshape(np.prod(gt_IN.shape[:2]),)
     
     #[2]:
-#    trainingIndexf = '/home/amax/xibobo/HybridSN-sample/data/DisjointUPtrainingIndexRandomTrain20.mat'
-#    train_indices = sio.loadmat(trainingIndexf)['trainingIndexRandomtrain']
-#    train_indices_rows = sio.loadmat(trainingIndexf)['trainingIndexRandomtrain_rows']
-#    train_indices_cols = sio.loadmat(trainingIndexf)['trainingIndexRandomtrain_cols']
-#    
-#    testingIndexf = '/home/amax/xibobo/HybridSN-sample/data/DisjointUPtestingIndexMix.mat'
-#    test_indices = sio.loadmat(testingIndexf)['testingIndexMix']  
-#    test_indices_rows = sio.loadmat(testingIndexf)['testingIndexMix_rows']  
-#    test_indices_cols = sio.loadmat(testingIndexf)['testingIndexMix_cols'] 
   
-    trainingIndexf = '/home/amax/xibobo/HybridSN-sample/data/DisjointUPtrainingIndexMix.mat'
+    trainingIndexf = '/home/amax/xibobo/data/DisjointUPtrainingIndexMix.mat'
     train_indices = sio.loadmat(trainingIndexf)['trainingIndexMix']
     train_indices_rows = sio.loadmat(trainingIndexf)['trainingIndexMix_rows']
     train_indices_cols = sio.loadmat(trainingIndexf)['trainingIndexMix_cols']
-    testingIndexf = '/home/amax/xibobo/HybridSN-sample/data/DisjointUPtestingIndexMix.mat'
+    testingIndexf = '/home/amax/xibobo/data/DisjointUPtestingIndexMix.mat'
     test_indices = sio.loadmat(testingIndexf)['testingIndexMix']  
     test_indices_rows = sio.loadmat(testingIndexf)['testingIndexMix_rows']  
     test_indices_cols = sio.loadmat(testingIndexf)['testingIndexMix_cols'] 
@@ -133,18 +120,8 @@ def run_training():
     
     data = preprocessing.scale(data)
     whole_data = data.reshape(data_IN.shape[0], data_IN.shape[1], data_IN.shape[2])
-#    whole_data = NL.NormalizationEachBand(data_IN, unit=False)
-    
-    # scaler = preprocessing.MaxAbsScaler()
-    # data = scaler.fit_transform(data)
-    
-#    whole_data = data.reshape(data_IN.shape[0], data_IN.shape[1], data_IN.shape[2])
     whole_data,pca = applyPCA(whole_data, numComponents = numComponents)
-    img_channels= whole_data.shape[2]
-#    temp_data = whole_data.reshape(whole_data.shape[0]*whole_data.shape[1], whole_data.shape[2])
-#    temp_data = preprocessing.scale(temp_data)
-#    whole_data = temp_data.reshape(whole_data.shape[0], whole_data.shape[1], whole_data.shape[2])
-    
+    img_channels= whole_data.shape[2]    
     
     padded_data = zeroPadding.zeroPadding_3D(whole_data, PATCH_LENGTH)
     
@@ -177,7 +154,7 @@ def run_training():
     loss1 = func.dce_loss(features, labels, centers, FLAGS.temp)
 #    loss2 = func.mcl_loss(features, labels, centers, 0.9)
 #    loss2 = func.gmcl_loss(features, labels, centers, 0.9)
-    loss2 = func.pl_loss(features, labels, centers)
+    loss2 = func.dis_loss(features, labels, centers)
 
 #    loss=loss1
     loss = loss1 + FLAGS.weight_pl * loss2
