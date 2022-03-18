@@ -23,17 +23,18 @@ Citation Details
 BibTeX entry:
 ```
 @ARTICLE{Xi2020JSTARS,
-  author={B. {Xi} and J. {Li} and Y. {Li} and R. {Song} and Y. {Shi} and S. {Liu} and Q. {Du}},
+  author={Xi, Bobo and Li, Jiaojiao and Li, Yunsong and Song, Rui and Shi, Yanzi and Liu, Songlin and Du, Qian},
   journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, 
   title={Deep Prototypical Networks With Hybrid Residual Attention for Hyperspectral Image Classification}, 
   year={2020},
   volume={13},
   number={},
-  pages={3683-3700},}
+  pages={3683-3700},
+  doi={10.1109/JSTARS.2020.3004973}}
  ```
  ```
- @ARTICLE{Xi_TNNLS_2022,
-  author={B. {Xi} and J. {Li} and Y. {Li} and R. {Song} and Y. {Xiao} and Q. {Du} and J. {Chanussot}},
+@ARTICLE{Xi_2022TNNLS_XGPN,
+  author={Xi, Bobo and Li, Jiaojiao and Li, Yunsong and Song, Rui and Xiao, Yuchao and Du, Qian and Chanussot, Jocelyn},
   journal={IEEE Transactions on Neural Networks and Learning Systems}, 
   title={Semi-supervised Cross-scale Graph Prototypical Network for Hyperspectral Image Classification}, 
   year={2022},
