@@ -14,7 +14,8 @@ References
 --
 If you find this code helpful, please kindly cite:  
 
-B. Xi, J. Li, Y. Li, R. Song, Y. Shi, S. Liu, Q. Du "Deep Prototypical Networks With Hybrid Residual Attention for Hyperspectral Image Classification," in IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, vol. 13, pp. 3683-3700, 2020, doi: [10.1109/JSTARS.2020.3004973](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9126161).
+[1]B. Xi, J. Li, Y. Li, R. Song, Y. Shi, S. Liu, Q. Du "Deep Prototypical Networks With Hybrid Residual Attention for Hyperspectral Image Classification," in IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, vol. 13, pp. 3683-3700, 2020, doi: [10.1109/JSTARS.2020.3004973](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9126161).
+[2] B. Xi, J. Li, Y. Li, R. Song, Y. Xiao, Q. Du, J. Chanussot, “Semi-supervised Cross-scale Graph Prototypical Network for Hyperspectral Image Classification,” IEEE Transactions on Neural Networks and Learning Systems, pp. 1-15, 2022.  
 
 Citation Details
 --
@@ -29,7 +30,18 @@ BibTeX entry:
   number={},
   pages={3683-3700},}
  ```
- 
+ ```
+ @ARTICLE{Xi_TNNLS_2022,
+  author={B. {Xi} and J. {Li} and Y. {Li} and R. {Song} and Y. {Xiao} and Q. {Du} and J. {Chanussot}},
+  journal={IEEE Transactions on Neural Networks and Learning Systems}, 
+  title={Semi-supervised Cross-scale Graph Prototypical Network for Hyperspectral Image Classification}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1-15},
+  }
+```
+
  Licensing
 --
 Copyright (C) 2020 Bobo Xi
